@@ -1,8 +1,8 @@
 package factory
 
 import (
+	"chat/core"
 	"chat/services/chat"
-	"chat/services/core"
 	"chat/services/mock"
 	"os"
 )

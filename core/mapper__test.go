@@ -1,8 +1,8 @@
-package mapper_test
+package core_test
 
 import (
+	"chat/core"
 	goutils "chat/pkg/go-utils"
-	chatservice "chat/services/chat"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestParseRequest(t *testing.T) {
 		t.Error(err)
 	}
 
-	m := new(chatservice.ChatServiceMapper)
+	m := new(core.ChatServiceMapper)
 
 	cr, err := m.ToChatRequest([]byte(bytes))
 	if err != nil {

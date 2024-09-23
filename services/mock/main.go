@@ -1,18 +1,17 @@
 package mock
 
 import (
+	core2 "chat/core"
 	goutils "chat/pkg/go-utils"
-	"chat/services/core"
-	"chat/services/mapper"
 )
 
 type Service struct {
 	apiKey   string
 	endpoint string
-	mapper   mapper.ChatServiceMapper
+	mapper   core2.ChatServiceMapper
 }
 
-func (s *Service) Execute(_ string, _ *[]core.Message) (*core.ChatResponse, error) {
+func (s *Service) Execute(_ string, _ *[]core2.Message) (*core2.ChatResponse, error) {
 	content, err := goutils.ReadContent("./services/mock/response.json")
 	if err != nil {
 		return nil, err
@@ -21,10 +20,10 @@ func (s *Service) Execute(_ string, _ *[]core.Message) (*core.ChatResponse, erro
 	return s.mapper.ToChatRequest([]byte(content))
 }
 
-func NewMockService(apiKey string) core.Service {
+func NewMockService(apiKey string) core2.Service {
 	return &Service{
 		apiKey:   apiKey,
-		endpoint: core.TestApiEndpoint,
-		mapper:   *new(mapper.ChatServiceMapper),
+		endpoint: core2.TestApiEndpoint,
+		mapper:   *new(core2.ChatServiceMapper),
 	}
 }

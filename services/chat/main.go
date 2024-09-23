@@ -2,8 +2,7 @@ package chat
 
 import (
 	"bytes"
-	"chat/services/core"
-	"chat/services/mapper"
+	core2 "chat/core"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -14,25 +13,25 @@ import (
 type Service struct {
 	apiKey   string
 	endpoint string
-	mapper   mapper.ChatServiceMapper
+	mapper   core2.ChatServiceMapper
 }
 
-func NewChatService(apiKey string) core.Service {
+func NewChatService(apiKey string) core2.Service {
 	return &Service{
 		apiKey:   apiKey,
-		endpoint: core.OpenAICompletionsApiEndpoint,
-		mapper:   *new(mapper.ChatServiceMapper),
+		endpoint: core2.OpenAICompletionsApiEndpoint,
+		mapper:   *new(core2.ChatServiceMapper),
 	}
 }
 
-func (ch *Service) formRequest(model string, messages *[]core.Message) *core.ChatRequest {
-	return &core.ChatRequest{
+func (ch *Service) formRequest(model string, messages *[]core2.Message) *core2.ChatRequest {
+	return &core2.ChatRequest{
 		Model:    model,
 		Messages: messages,
 	}
 }
 
-func (ch *Service) getChatGptResponse(request *core.ChatRequest) (*http.Response, error) {
+func (ch *Service) getChatGptResponse(request *core2.ChatRequest) (*http.Response, error) {
 	b, err := json.Marshal(request)
 	if err != nil {
 		return nil, err
@@ -55,7 +54,7 @@ func (ch *Service) getChatGptResponse(request *core.ChatRequest) (*http.Response
 	return response, err
 }
 
-func (ch *Service) Execute(model string, r *[]core.Message) (*core.ChatResponse, error) {
+func (ch *Service) Execute(model string, r *[]core2.Message) (*core2.ChatResponse, error) {
 	request := ch.formRequest(model, r)
 
 	response, err := ch.getChatGptResponse(request)

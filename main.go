@@ -1,8 +1,8 @@
 package main
 
 import (
+	"chat/core"
 	u "chat/pkg/go-utils"
-	"chat/services/core"
 	"chat/services/factory"
 	"fmt"
 )
