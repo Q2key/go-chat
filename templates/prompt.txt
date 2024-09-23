@@ -1,0 +1,4 @@
+Read my first and second message and analyse the text. These two messages contains first and last part of my cover letter.
+Read the third message, this message contain the list of responsibilities that I will be available on the new job.
+Create a list of reasons why I will be suitable for this position. Don't use any markdown symbols. Use line breaks for each least item.
+Your output should not contain any explanation information, just a raw answer. For each list describe the reason and link from my first and second message.

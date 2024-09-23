@@ -1,0 +1,3 @@
+We need to develop great api for company
+We want to use the beast architecture
+We need to find someone who can write clean and scalable codebase

@@ -1,0 +1,7 @@
+Dear Hiring Team,
+
+I am excited to apply for the Senior Backend Developer position at your company. With over 8 years of experience in backend software development, I have sufficient expertise in Python, Go, NodeJS, and well known design principles. I have worked across industries such as FinTech, Document Management, and Telecom, consistently leading teams to deliver scalable and high-performance solutions. I thrive in environments that value continuous learning and innovation, which aligns perfectly with your company's mission.
+
+Throughout my career, I have tackled different challenging tasks, such as migrating services from Python to Go for enhanced performance, refactoring legacy code to improve scalability, and optimizing complex SQL operations. I have consistently succeeded in delivering high-quality, reliable solutions that solve intricate technical problems. I enjoy working in environments that push me to solve tough problems, and I see this as an exciting opportunity to apply my problem-solving skills to your backend systems.
+
+In my previous roles, I have led the development and optimization of backend systems, ensuring their scalability and performance. I value clean architecture, efficient API design, and have experience with large-scale data processing and analysis. These experiences, along with my collaborative nature and leadership abilities, have allowed me to guide teams through complex technical challenges.
