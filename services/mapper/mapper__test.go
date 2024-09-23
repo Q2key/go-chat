@@ -1,8 +1,8 @@
-package services_test
+package mapper_test
 
 import (
 	goutils "chat/pkg/go-utils"
-	chatservice "chat/services/chat-service"
+	chatservice "chat/services/chat"
 	"testing"
 )
 

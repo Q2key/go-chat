@@ -1,9 +1,9 @@
-package chat_service
+package chat
 
 import (
 	"bytes"
-	"chat/core"
-	"chat/services"
+	"chat/services/core"
+	"chat/services/mapper"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -11,28 +11,28 @@ import (
 	"net/http"
 )
 
-type ChatService struct {
+type Service struct {
 	apiKey   string
 	endpoint string
-	mapper   services.ChatServiceMapper
+	mapper   mapper.ChatServiceMapper
 }
 
 func NewChatService(apiKey string) core.Service {
-	return &ChatService{
+	return &Service{
 		apiKey:   apiKey,
 		endpoint: core.OpenAICompletionsApiEndpoint,
-		mapper:   *new(services.ChatServiceMapper),
+		mapper:   *new(mapper.ChatServiceMapper),
 	}
 }
 
-func (ch *ChatService) formRequest(model string, messages *[]core.Message) *core.ChatRequest {
+func (ch *Service) formRequest(model string, messages *[]core.Message) *core.ChatRequest {
 	return &core.ChatRequest{
 		Model:    model,
 		Messages: messages,
 	}
 }
 
-func (ch *ChatService) getChatGptResponse(request *core.ChatRequest) (*http.Response, error) {
+func (ch *Service) getChatGptResponse(request *core.ChatRequest) (*http.Response, error) {
 	b, err := json.Marshal(request)
 	if err != nil {
 		return nil, err
@@ -55,7 +55,7 @@ func (ch *ChatService) getChatGptResponse(request *core.ChatRequest) (*http.Resp
 	return response, err
 }
 
-func (ch *ChatService) Execute(model string, r *[]core.Message) (*core.ChatResponse, error) {
+func (ch *Service) Execute(model string, r *[]core.Message) (*core.ChatResponse, error) {
 	request := ch.formRequest(model, r)
 
 	response, err := ch.getChatGptResponse(request)

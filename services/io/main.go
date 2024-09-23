@@ -1,7 +1,7 @@
-package io_service
+package io
 
 import (
-	"chat/core"
+	"chat/services/core"
 	"fmt"
 	"os"
 )

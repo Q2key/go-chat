@@ -1,8 +1,8 @@
-package services
+package mapper
 
 import (
-	"chat/core"
 	goutils "chat/pkg/go-utils"
+	"chat/services/core"
 	"encoding/json"
 )
 
