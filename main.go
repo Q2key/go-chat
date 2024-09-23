@@ -3,8 +3,31 @@ package main
 import (
 	"chat/core"
 	u "chat/pkg/go-utils"
+	chatservice "chat/services/chat-service"
 	ioservice "chat/services/io-service"
+	mockservice "chat/services/mock-service"
+	"os"
 )
+
+type ServiceFactory struct {
+}
+
+func NewServiceFactory() *ServiceFactory {
+	return &ServiceFactory{}
+}
+
+func (factory *ServiceFactory) MakeOpenAiService() core.Service {
+	apiKey := os.Getenv("OPENAI_KEY")
+	if len(apiKey) == 0 {
+		panic("Please set OPENAI_KEY environment variable")
+	}
+
+	return chatservice.NewChatService(apiKey)
+}
+
+func (factory *ServiceFactory) MakeMockService() core.Service {
+	return mockservice.NewMockService("DUMMY_API_KEY")
+}
 
 func main() {
 
@@ -13,7 +36,7 @@ func main() {
 	payload, _ := u.ReadContent("./templates/payload.txt")
 	prompt, _ := u.ReadContent("./templates/prompt.txt")
 
-	openAiService := core.NewServiceFactory().MakeOpenAiService()
+	openAiService := NewServiceFactory().MakeOpenAiService()
 	chatResponse, err := openAiService.Execute(core.GptModel40,
 		&[]core.Message{
 			{
