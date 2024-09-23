@@ -1,9 +1,7 @@
-package factory
+package services
 
 import (
 	"chat/core"
-	"chat/services/chat"
-	"chat/services/mock"
 	"os"
 )
 
@@ -20,9 +18,9 @@ func (factory *ServiceFactory) MakeOpenAiService() core.Service {
 		panic("Please set OPENAI_KEY environment variable")
 	}
 
-	return chat.NewChatService(apiKey)
+	return NewChatService(apiKey)
 }
 
 func (factory *ServiceFactory) MakeMockService() core.Service {
-	return mock.NewMockService("DUMMY_API_KEY")
+	return NewMockService("DUMMY_API_KEY")
 }

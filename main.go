@@ -3,8 +3,7 @@ package main
 import (
 	"chat/core"
 	u "chat/pkg/go-utils"
-	"chat/services/factory"
-	"fmt"
+	"chat/services"
 )
 
 func main() {
@@ -14,7 +13,7 @@ func main() {
 	payload, _ := u.ReadContent("./templates/payload.txt")
 	prompt, _ := u.ReadContent("./templates/prompt.txt")
 
-	openAiService := factory.NewServiceFactory().MakeMockService()
+	openAiService := services.NewServiceFactory().MakeOpenAiService()
 	chatResponse, err := openAiService.Execute(core.GptModel40,
 		&[]core.Message{
 			{
@@ -36,8 +35,6 @@ func main() {
 		})
 
 	u.Check(err)
-
-	fmt.Println(chatResponse)
-
-	u.Check(err)
+	io := services.NewTextService()
+	u.Check(io.Execute(chatResponse.Id, chatResponse.GetAnswer()))
 }
