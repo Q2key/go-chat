@@ -1,5 +1,11 @@
 package core
 
+import (
+	chatservice "chat/services/chat-service"
+	mockservice "chat/services/mock-service"
+	"os"
+)
+
 const (
 	OpenAICompletionsApiEndpoint = "https://api.openai.com/v1/chat/completions"
 	TestApiEndpoint              = "https://postman-echo.com/post"
@@ -51,4 +57,24 @@ func (ch *ChatResponse) GetAnswer() string {
 	}
 
 	return ""
+}
+
+type ServiceFactory struct {
+}
+
+func NewServiceFactory() *ServiceFactory {
+	return &ServiceFactory{}
+}
+
+func (factory *ServiceFactory) MakeOpenAiService() Service {
+	apiKey := os.Getenv("OPENAI_KEY")
+	if len(apiKey) == 0 {
+		panic("Please set OPENAI_KEY environment variable")
+	}
+
+	return chatservice.NewChatService(apiKey)
+}
+
+func (factory *ServiceFactory) MakeMockService() Service {
+	return mockservice.NewMockService("DUMMY_API_KEY")
 }

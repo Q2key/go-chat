@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the Senior Backend Developer position at your company. With over 8 years of experience in backend software development, I have sufficient expertise in Python, Go, NodeJS, and well known design principles. I have worked across industries such as FinTech, Document Management, and Telecom, consistently leading teams to deliver scalable and high-performance solutions. I thrive in environments that value continuous learning and innovation, which aligns perfectly with your company's mission.
+
+Throughout my career, I have tackled different challenging tasks, such as migrating services from Python to Go for enhanced performance, refactoring legacy code to improve scalability, and optimizing complex SQL operations. I have consistently succeeded in delivering high-quality, reliable solutions that solve intricate technical problems. I enjoy working in environments that push me to solve tough problems, and I see this as an exciting opportunity to apply my problem-solving skills to your backend systems.
+
+In my previous roles, I have led the development and optimization of backend systems, ensuring their scalability and performance. I value clean architecture, efficient API design, and have experience with large-scale data processing and analysis. These experiences, along with my collaborative nature and leadership abilities, have allowed me to guide teams through complex technical challenges.
+
+{{.Generated}}
+
+As someone passionate about Computer Science, I am currently pursuing a Master of Science degree to deepen my theoretical knowledge and practical skills. As part of my degree requirements, I have completed advanced courses in algorithms, including dynamic programming and search/indexing techniques, which have sharpened my problem-solving abilities and strengthened my understanding of system efficiency. Additionally, I have earned certifications in AWS Cloud Practitioner, further enhancing my expertise in cloud infrastructure and backend development.
+
+In addition to my technical expertise, I am passionate about maintaining a healthy lifestyle and continuous self-improvement. I believe that a balance between professional growth and personal well-being is essential to sustained success. This mindset is reflected in my work ethic, dedication, and drive to contribute to impactful projects.
+
