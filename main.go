@@ -3,8 +3,8 @@ package main
 import (
 	"chat/core"
 	u "chat/pkg/go-utils"
+	chatservice "chat/services/chat-service"
 	ioservice "chat/services/io-service"
-	mockservice "chat/services/mock-service"
 	"os"
 )
 
@@ -19,7 +19,7 @@ func main() {
 		panic("Please set OPENAI_KEY environment variable")
 	}
 
-	service := mockservice.NewMockService(apiKey)
+	service := chatservice.NewChatService(apiKey)
 	chatResponse, err := service.Execute(core.GptModel40,
 		&[]core.Message{
 			{
@@ -43,7 +43,14 @@ func main() {
 	u.Check(err)
 
 	ioService := ioservice.NewTextService()
-	err = ioService.Execute(chatResponse.Id, chatResponse.GetAnswer())
+
+	coverLetterContent := intro
+	coverLetterContent += "\r\n["
+	coverLetterContent += chatResponse.GetAnswer()
+	coverLetterContent += "]\r\n"
+	coverLetterContent += outro
+
+	err = ioService.Execute(chatResponse.Id, coverLetterContent)
 
 	u.Check(err)
 }
