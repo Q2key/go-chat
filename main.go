@@ -18,6 +18,6 @@ func main() {
 		})
 
 	u.Check(err)
-	io := services.NewTextService()
+	io := services.NewTextService("./build")
 	u.Check(io.Execute(chatResponse.Id, chatResponse.GetAnswer()))
 }
