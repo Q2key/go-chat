@@ -10,9 +10,9 @@ type TextIoService struct {
 	outputFolder string
 }
 
-func NewTextService() core.IOService {
+func NewTextService(outPath string) core.IOService {
 	return &TextIoService{
-		outputFolder: "./build",
+		outputFolder: outPath,
 	}
 }
 
