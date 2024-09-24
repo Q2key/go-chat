@@ -6,9 +6,10 @@ import (
 )
 
 type MockService struct {
-	apiKey   string
-	endpoint string
-	mapper   core.ChatServiceMapper
+	apiKey       string
+	endpoint     string
+	responseJson string
+	mapper       core.ChatServiceMapper
 }
 
 func (s *MockService) Execute(_ string, _ *[]core.Message) (*core.ChatResponse, error) {
@@ -20,10 +21,11 @@ func (s *MockService) Execute(_ string, _ *[]core.Message) (*core.ChatResponse, 
 	return s.mapper.ToChatRequest([]byte(content))
 }
 
-func NewMockService(apiKey string) core.Service {
+func NewMockService(apiKey, responseJson string) core.Service {
 	return &MockService{
-		apiKey:   apiKey,
-		endpoint: core.TestApiEndpoint,
-		mapper:   *new(core.ChatServiceMapper),
+		apiKey:       apiKey,
+		endpoint:     core.TestApiEndpoint,
+		responseJson: responseJson,
+		mapper:       *new(core.ChatServiceMapper),
 	}
 }

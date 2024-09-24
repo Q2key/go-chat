@@ -22,5 +22,10 @@ func (factory *ServiceFactory) MakeOpenAiService() core.Service {
 }
 
 func (factory *ServiceFactory) MakeMockService() core.Service {
-	return NewMockService("DUMMY_API_KEY")
+	responseJson := os.Getenv("MOCK_RESPONSE_JSON")
+	if len(responseJson) == 0 {
+		panic("Please set MOCK_RESPONSE_JSON environment variable")
+	}
+
+	return NewMockService("DUMMY_API_KEY", responseJson)
 }
