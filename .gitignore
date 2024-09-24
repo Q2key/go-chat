@@ -1,4 +1,4 @@
 .env
 /**/*.chat.txt
-./.idea
+.idea
 templates
