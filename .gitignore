@@ -1,5 +1,6 @@
 .env
 /**/*.chat.txt
 /**/*.prompt.txt
+/**/*.response.json
 .idea
 templates
